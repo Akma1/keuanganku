@@ -41,6 +41,8 @@ dependencies:
   drift_db_viewer: ^2.1.0
   intl: ^0.20.2
   flutter_localization: ^0.3.2
+  dotted_border: ^3.0.1
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

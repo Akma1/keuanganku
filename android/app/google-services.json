@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "31122871882",
+    "project_id": "keuanganku-app-4718c",
+    "storage_bucket": "keuanganku-app-4718c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31122871882:android:544398096b7edcda59b8b3",
+        "android_client_info": {
+          "package_name": "com.akmadev.keuanganku"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrQtqjRwQmxTnB0u-A3x6-pEkjCwbXHeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

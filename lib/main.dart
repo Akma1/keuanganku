@@ -4,6 +4,7 @@ import 'package:flutter_localization/flutter_localization.dart';
 
 import 'package:get/get.dart';
 import 'package:keuanganku/app/common/serializer.dart';
+import 'package:keuanganku/app/data/database/db.dart';
 import 'package:keuanganku/app/services/auth_service.dart';
 
 import 'app/routes/app_pages.dart';
@@ -15,6 +16,7 @@ void main() async {
   final FlutterLocalization localization = FlutterLocalization.instance;
 
   Get.lazyPut(() => AuthService());
+  Get.lazyPut(() => AppDb());
   runApp(
     GetMaterialApp(
       title: "Application",
