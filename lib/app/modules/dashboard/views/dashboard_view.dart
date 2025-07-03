@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:keuanganku/app/data/database/db.dart';
 import 'package:keuanganku/app/data/database/tables/transactions.dart';
 import 'package:keuanganku/app/widgets/custom_button.dart';

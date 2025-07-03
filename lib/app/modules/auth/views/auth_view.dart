@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:keuanganku/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:keuanganku/app/modules/auth/sign_in/views/sign_in_view.dart';
