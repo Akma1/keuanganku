@@ -15,13 +15,14 @@ import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import 'package:keuanganku/app/middleware/auth_middleware.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.AUTH;
+  static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
     GetPage(
@@ -29,37 +30,14 @@ class AppPages {
       page: () => const AuthView(),
       binding: AuthBinding(),
       children: [
-        GetPage(
-            name: _Paths.SIGN_IN,
-            page: () => const SignInView(),
-            binding: SignInBinding()),
-        GetPage(
-            name: _Paths.REGISTER,
-            page: () => const RegisterView(),
-            binding: HistoryBinding()),
-        GetPage(
-          name: _Paths.SPLASH_SCREEN,
-          page: () => const SplashScreenView(),
-          binding: SplashScreenBinding(),
-        ),
+        GetPage(name: _Paths.SIGN_IN, page: () => const SignInView(), binding: SignInBinding()),
+        GetPage(name: _Paths.REGISTER, page: () => const RegisterView(), binding: HistoryBinding()),
+        GetPage(name: _Paths.SPLASH_SCREEN, page: () => const SplashScreenView(), binding: SplashScreenBinding()),
       ],
     ),
-    GetPage(
-        name: _Paths.HOME,
-        page: () => const HomeView(),
-        binding: HomeBinding()),
-    GetPage(
-        name: _Paths.DASHBOARD,
-        page: () => const DashboardView(),
-        binding: DashboardBinding()),
-    GetPage(
-        name: _Paths.HISTORY,
-        page: () => const HistoryView(),
-        binding: HistoryBinding()),
-    GetPage(
-      name: _Paths.DETAILS,
-      page: () => const DetailsView(),
-      binding: DetailsBinding(),
-    ),
+    GetPage(name: _Paths.HOME, page: () => const HomeView(), binding: HomeBinding(), middlewares: [AuthMiddleware()]),
+    GetPage(name: _Paths.DASHBOARD, page: () => const DashboardView(), binding: DashboardBinding()),
+    GetPage(name: _Paths.HISTORY, page: () => const HistoryView(), binding: HistoryBinding()),
+    GetPage(name: _Paths.DETAILS, page: () => const DetailsView(), binding: DetailsBinding()),
   ];
 }

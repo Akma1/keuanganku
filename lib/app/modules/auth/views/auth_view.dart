@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:keuanganku/app/routes/app_pages.dart';
-import 'package:keuanganku/app/widgets/custom_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:keuanganku/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:keuanganku/app/modules/auth/sign_in/views/sign_in_view.dart';
 
-import '../controllers/auth_controller.dart';
-
-class AuthView extends GetView<AuthController> {
+class AuthView extends StatelessWidget {
   const AuthView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Text', style: TextStyle(fontSize: 20)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomButton(
-                onPressed: () {
-                  Get.toNamed(Routes.SIGN_IN);
-                },
-                text: 'Sign In',
-                buttonType: ButtonType.elevated,
-              ),
-            ],
-          ),
-        ],
-      ),
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(body: Center(child: CircularProgressIndicator()));
+        }
+        if (snapshot.hasData) {
+          // Sudah login, tampilkan dashboard
+          return const DashboardView();
+        } else {
+          // Belum login, tampilkan sign in
+          return const SignInView();
+        }
+      },
     );
   }
 }

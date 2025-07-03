@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:keuanganku/app/routes/app_pages.dart';
 
-import '../controllers/splash_screen_controller.dart';
-
-class SplashScreenView extends GetView<SplashScreenController> {
+class SplashScreenView extends StatelessWidget {
   const SplashScreenView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('SplashScreenView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'SplashScreenView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+    Future.delayed(Duration.zero, () {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        Get.offAllNamed(Routes.SIGN_IN);
+      } else {
+        Get.offAllNamed(Routes.HOME);
+      }
+    });
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }
