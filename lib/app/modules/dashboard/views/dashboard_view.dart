@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:keuanganku/app/data/database/db.dart';
 import 'package:keuanganku/app/data/database/tables/transactions.dart';
-import 'package:keuanganku/app/widgets/custom_button.dart';
 
 import '../controllers/dashboard_controller.dart';
 
@@ -12,21 +11,7 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('DashboardView'),
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        actions: [
-          CustomButton(
-            onPressed: () {
-              //
-            },
-            icon: Icons.logout_rounded,
-            textColor: Colors.black,
-            buttonType: ButtonType.icon,
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('DashboardView'), automaticallyImplyLeading: false, centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
