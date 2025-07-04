@@ -45,7 +45,11 @@ class SignInView extends GetView<SignInController> {
             Gaps.h16,
             SizedBox(
               width: double.infinity,
-              child: CustomButton(onPressed: () {}, text: 'Sign Up', buttonType: ButtonType.outlined),
+              child: CustomButton(
+                onPressed: () => controller.register(emailController.text.trim(), passwordController.text.trim()),
+                text: 'Sign Up',
+                buttonType: ButtonType.outlined,
+              ),
             ),
           ],
         ),

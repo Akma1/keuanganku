@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:keuanganku/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:keuanganku/app/modules/auth/sign_in/views/sign_in_view.dart';
+import 'package:get/get.dart';
+import 'package:keuanganku/app/routes/app_pages.dart';
+import 'package:keuanganku/app/modules/main_menu/views/main_menu_view.dart';
 
 class AuthView extends StatelessWidget {
   const AuthView({super.key});
@@ -15,11 +16,14 @@ class AuthView extends StatelessWidget {
           return const Scaffold(body: Center(child: CircularProgressIndicator()));
         }
         if (snapshot.hasData) {
-          // Sudah login, tampilkan dashboard
-          return const DashboardView();
+          // Sudah login, tampilkan MainMenuView (dengan bottom nav)
+          return const MainMenuView();
         } else {
-          // Belum login, tampilkan sign in
-          return const SignInView();
+          // Belum login, navigasi ke SIGN_IN agar binding berjalan
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Get.offAllNamed(Routes.SIGN_IN);
+          });
+          return const SizedBox.shrink();
         }
       },
     );

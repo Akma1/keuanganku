@@ -28,9 +28,19 @@ class SignInController extends GetxController {
     try {
       await _authService.signInWithEmail(email, password);
       Get.snackbar('Sukses', 'Login berhasil');
-      // TODO: Navigasi ke halaman utama
+      // Tidak perlu navigasi manual, biarkan AuthView yang handle
     } catch (e) {
-      Get.snackbar('Error', 'Login gagal: \\${e.toString()}');
+      Get.snackbar('Error', 'Login gagal: ${e.toString()}');
+    }
+  }
+
+  Future<void> register(String email, String password) async {
+    try {
+      await _authService.registerWithEmail(email, password);
+      Get.snackbar('Sukses', 'Registrasi berhasil, silakan login.');
+      // Tidak perlu navigasi manual, biarkan AuthView yang handle
+    } catch (e) {
+      Get.snackbar('Error', 'Registrasi gagal: ${e.toString()}');
     }
   }
 }
