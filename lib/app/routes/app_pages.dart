@@ -28,8 +28,16 @@ class AppPages {
       page: () => const AuthView(),
       binding: AuthBinding(),
       children: [
-        GetPage(name: _Paths.SIGN_IN, page: () => const SignInView(), binding: SignInBinding()),
-        GetPage(name: _Paths.REGISTER, page: () => const RegisterView(), binding: HistoryBinding()),
+        GetPage(
+          name: _Paths.SIGN_IN,
+          page: () => const SignInView(),
+          binding: SignInBinding(),
+        ),
+        GetPage(
+          name: _Paths.REGISTER,
+          page: () => const RegisterView(),
+          binding: HistoryBinding(),
+        ),
       ],
     ),
     GetPage(name: _Paths.HOME, page: () => const HomeView(), binding: HomeBinding()),
@@ -39,7 +47,15 @@ class AppPages {
       binding: DashboardBinding(),
       middlewares: [AuthMiddleware()],
     ),
-    GetPage(name: _Paths.HISTORY, page: () => const HistoryView(), binding: HistoryBinding()),
-    GetPage(name: _Paths.DETAILS, page: () => const DetailsView(), binding: DetailsBinding()),
+    GetPage(
+      name: _Paths.HISTORY,
+      page: () => const HistoryView(),
+      binding: HistoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAILS,
+      page: () => const DetailsView(),
+      binding: DetailsBinding(),
+    ),
   ];
 }
